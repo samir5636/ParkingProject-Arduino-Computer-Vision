@@ -1,0 +1,21 @@
+td:hover {
+  background: rgba(0, 0, 0, 0.2);
+  color: #063654;
+}
+
+td {
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  text-transform: uppercase;
+  font-family: 'Rubik', sans-serif;
+  transform: skew(-25deg);
+  transition: all 400ms ease-out;
+}
+th{
+  color:#02a3b9;
+}
+div.card-header{
+  color:#02a3b9;
+  text-transform: uppercase;
+  font-family: 'Rubik', sans-serif;
+}

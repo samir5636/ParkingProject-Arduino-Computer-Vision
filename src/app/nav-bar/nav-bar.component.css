@@ -1,0 +1,25 @@
+
+a.nav-link:hover {
+  background: rgba(0, 0, 0, 0.2);
+  color: #0c28c7;
+  border-left: 12px solid rgba(0, 0, 0, 0.3);
+}
+
+a.nav-link {
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  color:#02a3b9;
+  text-transform: uppercase;
+  font-family: 'Rubik', sans-serif;
+  transform: skew(-25deg);
+  transition: all 400ms ease-out;
+}
+
+
+
+
+
+
+
+
+

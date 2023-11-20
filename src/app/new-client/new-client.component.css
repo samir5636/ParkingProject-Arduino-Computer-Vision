@@ -1,0 +1,18 @@
+label:hover {
+  background: rgba(0, 0, 0, 0.2);
+  color: #063654;
+}
+
+label {
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  text-transform: uppercase;
+  font-family: 'Rubik', sans-serif;
+  transform: skew(-25deg);
+  transition: all 400ms ease-out;
+}
+div.card-header{
+  color:#02a3b9;
+  text-transform: uppercase;
+  font-family: 'Rubik', sans-serif;
+}
