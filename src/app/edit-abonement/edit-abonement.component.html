@@ -1,1 +1,79 @@
-<p>edit-abonement works!</p>
+<div class="card" style="width: 100%;">
+  <div class="card-header d-flex justify-content-center align-items-center ">
+    <p class="mb-0">
+      Add Abonement Information
+    </p>
+  </div>
+  <div class="card-body">
+    <p>{{infoMatricule}}</p>
+    <form [formGroup]="infoFormGroup" (ngSubmit)="handelEditSold()">
+      <div class="mb-3">
+        <label  class="form-label">Solde</label>
+        <input type="text" class="form-control"  formControlName="sold" >
+        <small *ngIf="infoFormGroup.get('sold')?.errors && infoFormGroup.get('sold')?.touched" class="text-danger">
+          {{ ErorreService.getErrorMessage('sold', infoFormGroup.get('sold')?.errors ) }}
+        </small>
+      </div>
+
+<!--      <div class="mb-3">-->
+<!--        <label  class="form-label">Matricul</label>-->
+<!--        <input type="text" class="form-control"  formControlName="matricule">-->
+<!--        <small *ngIf="infoFormGroup.get('matricule')?.errors && infoFormGroup.get('matricule')?.touched" class="text-danger">-->
+<!--          {{ ErorreService.getErrorMessage('matricule', infoFormGroup.get('matricule')?.errors ) }}-->
+<!--        </small>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label  class="form-label">Model</label>-->
+<!--        <input type="text" class="form-control" formControlName="model">-->
+<!--        <small *ngIf="infoFormGroup.get('model')?.errors && infoFormGroup.get('model')?.touched" class="text-danger">-->
+<!--          {{ ErorreService.getErrorMessage('model', infoFormGroup.get('model')?.errors ) }}-->
+<!--        </small>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+
+<!--        <label  class="form-label" >Full Name</label>-->
+<!--        <input type="text" class="form-control" formControlName="fullname" >-->
+<!--        <small *ngIf="infoFormGroup.get('fullname')?.errors && infoFormGroup.get('fullname')?.touched" class="text-danger">-->
+<!--          {{ ErorreService.getErrorMessage('fullname', infoFormGroup.get('fullname')?.errors ) }}-->
+<!--        </small>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label for="exampleFormControlInput1" class="form-label" >Email address</label>-->
+<!--        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" formControlName="email">-->
+<!--        <small *ngIf="infoFormGroup.get('email')?.errors && infoFormGroup.get('email')?.touched" class="text-danger">-->
+<!--          {{ ErorreService.getErrorMessage('email', infoFormGroup.get('email')?.errors ) }}-->
+<!--        </small>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label  class="form-label">Phone Number</label>-->
+<!--        <input type="text" class="form-control" formControlName="phone_number" >-->
+<!--        <small *ngIf="infoFormGroup.get('phone_number')?.errors && infoFormGroup.get('phone_number')?.touched" class="text-danger">-->
+<!--          {{ ErorreService.getErrorMessage('phone_number', infoFormGroup.get('phone_number')?.errors ) }}-->
+<!--        </small>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label  class="form-label">CNI</label>-->
+<!--        <input type="text" class="form-control"formControlName="cin" >-->
+<!--        <small *ngIf="infoFormGroup.get('cin')?.errors && infoFormGroup.get('cin')?.touched" class="text-danger">-->
+<!--          {{ ErorreService.getErrorMessage('cin', infoFormGroup.get('cin')?.errors ) }}-->
+<!--        </small>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label  class="form-label">Age</label>-->
+<!--        <input type="text" class="form-control" formControlName="age">-->
+<!--        <small *ngIf="infoFormGroup.get('age')?.errors && infoFormGroup.get('age')?.touched" class="text-danger">-->
+<!--          {{ ErorreService.getErrorMessage('age', infoFormGroup.get('age')?.errors ) }}-->
+<!--        </small>-->
+<!--      </div>-->
+      <button type="submit" class="button-85">Submit</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+

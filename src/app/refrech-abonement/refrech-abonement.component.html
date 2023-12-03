@@ -5,16 +5,22 @@
     </p>
   </div>
   <div class="card-body">
-    <form>
+    <form [formGroup]="refreshFormGroup" (ngSubmit)="handelRefresh()">
       <div class="mb-3">
         <label  class="form-label">Matricul</label>
-        <input type="text" class="form-control" >
+        <input type="text" class="form-control"  formControlName="matricule">
+        <small *ngIf="refreshFormGroup.get('matricule')?.errors && refreshFormGroup.get('matricule')?.touched" class="text-danger">
+          {{refreshserviceErorre.getErrorMessage('matricule', refreshFormGroup.get('matricule')?.errors ) }}
+        </small>
       </div>
       <div class="mb-3">
         <label  class="form-label">Solde</label>
-        <input type="text" class="form-control"  >
+        <input type="text" class="form-control"  formControlName="solde">
+        <small *ngIf="refreshFormGroup.get('solde')?.errors && refreshFormGroup.get('solde')?.touched" class="text-danger">
+          {{refreshserviceErorre.getErrorMessage('solde', refreshFormGroup.get('solde')?.errors ) }}
+        </small>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="button-85">Submit</button>
     </form>
   </div>
 </div>

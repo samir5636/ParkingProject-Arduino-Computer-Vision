@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, numberAttribute, OnInit} from '@angular/core';
 import { Chart } from 'angular-highcharts';
+import {CarServiceService} from "../services/car-service.service";
+import {NumbrCarTotal} from "../modules/NmbrCarTotalAndInParking";
+import {NumberCarIN} from "../modules/Total";
 
 @Component({
   selector: 'app-statistic',
@@ -7,81 +10,94 @@ import { Chart } from 'angular-highcharts';
   styleUrls: ['./statistic.component.css']
 })
 export class StatisticComponent implements OnInit {
-  lineChart!: Chart;
+  // lineChart!: Chart;
   pieChart!: Chart;
+  nbrT!:NumbrCarTotal;
+  inP!:NumberCarIN;
+
+  constructor(private carsirvice : CarServiceService) {
+  }
 
   ngOnInit(): void {
-    // Générez des données pour le graphique en ligne (croissance linéaire)
-    const lineChartData = this.generateLineChartData();
+    this.handelNbrTotal();
+    this.handelNbrCarInParking();
+  }
 
-    // Créez le graphique en ligne
-    this.lineChart = new Chart({
-      chart: {
-        type: 'line'
-      },
-      title: {
-        text: 'Parking Development'
-      },
-      credits: {
-        enabled: false
-      },
-      series: [
-        {
-          name: 'Cars in parking',
-          data: lineChartData
-        } as any
-      ]
-    });
+  private createPieChart(): void {
+    console.log('Data:', this.nbrT,"333", this.inP);
 
-    // Créez le graphique en secteur
-    this.pieChart = new Chart({
-      chart: {
-        type: 'pie',
-        plotShadow: false,
-      },
-      credits: {
-        enabled: false
-      },
-      plotOptions: {
-        pie: {
-          innerSize: '99%',
-          borderWidth: 10,
-          borderColor: '',
-          slicedOffset: 10,
-          dataLabels: {
-            connectorWidth: 0,
-          },
-        }
-      },
-      title: {
-        verticalAlign: 'middle',
-        floating: true,
-        text: 'Parking',
-      },
-      legend: {
-        enabled: false,
-      },
-      series: [
-        {
+      console.log('Creating pie chart...');
+
+      const totalCars = this.nbrT.number;
+      const carsInParking = this.inP.number;
+
+      this.pieChart = new Chart({
+        chart: {
           type: 'pie',
-          name: 'Cars in parking',
-          data: [
-            { name: 'Cars In Parking', y: lineChartData[lineChartData.length - 1], color: '#02a3b9' },
-            { name: 'Cars out Parking', y: 20000, color: '#000000' },
-          ]
-        } as any
-      ]
+          plotShadow: false,
+        },
+        credits: {
+          enabled: false
+        },
+        plotOptions: {
+          pie: {
+            innerSize: '99%',
+            borderWidth: 10,
+            borderColor: '',
+            slicedOffset: 10,
+            dataLabels: {
+              connectorWidth: 0,
+            },
+          }
+        },
+        title: {
+          verticalAlign: 'middle',
+          floating: true,
+          text: 'Parking',
+        },
+        legend: {
+          enabled: false,
+        },
+        series: [
+          {
+            type: 'pie',
+            name: 'Cars',
+            data: [
+              { name: 'Cars out Parking', y: totalCars, color: '#02a3b9' },
+              { name: 'Cars in Parking', y: carsInParking, color: '#000000' },
+            ]
+          } as any
+        ]
+      });
+
+      console.log('Pie chart created:', this.pieChart);
+
+  }
+
+  handelNbrTotal(): void {
+    this.carsirvice.nbrTotalCar().subscribe({
+      next: (data :NumbrCarTotal) => {
+        console.log('NbrTotalCar data:', data);
+        this.nbrT = data;
+        this.createPieChart();
+      },
+      error: (error) => {
+        console.error('NbrTotalCar error:', error);
+      },
     });
   }
 
-  // Fonction pour générer des données de croissance linéaire
-  generateLineChartData(): number[] {
-    const data = [];
-    for (let i = 1; i <= 10; i++) {
-      // Utilisez une fonction mathématique simple pour simuler la croissance
-      const carsInParking = 1000 * i;
-      data.push(carsInParking);
-    }
-    return data;
+  handelNbrCarInParking(): void {
+    this.carsirvice.nbrCarInparking().subscribe({
+      next: (data:NumberCarIN) => {
+        console.log('NbrCarInparking data:', data);
+        this.inP = data;
+        this.createPieChart();
+      },
+      error: (error) => {
+        console.error('NbrCarInparking error:', error);
+      },
+    });
   }
+
 }

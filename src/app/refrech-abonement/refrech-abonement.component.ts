@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ErorrServiceService} from "../services/erorr-service.service";
 
 @Component({
   selector: 'app-refrech-abonement',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RefrechAbonementComponent implements OnInit {
 
-  constructor() { }
+  refreshFormGroup!:FormGroup;
+
+  constructor(private fb:FormBuilder, public refreshserviceErorre:ErorrServiceService) { }
+
 
   ngOnInit(): void {
+    this.refreshFormGroup=this.fb.group({
+      matricule : this.fb.control(null,[Validators.required]),
+      solde : this.fb.control(null,[Validators.required]),
+    })
   }
 
+  handelRefresh() {
+
+  }
 }

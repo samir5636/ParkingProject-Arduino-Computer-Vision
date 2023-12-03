@@ -1,40 +1,59 @@
 <div class="card" style="width: 100%;">
   <div class="card-header d-flex justify-content-center align-items-center ">
     <p class="mb-0">
-      List Cars In Parking
+      List All Aonnement
     </p>
   </div>
-  <div class="card-body col-4">
+  <div class="card-body col-8">
+    <div class="samir">
     <table class="table">
 
       <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Date Creat</th>
+        <th scope="col">client</th>
+        <th scope="col">email</th>
+        <th scope="col">phone number</th>
+        <th scope="col">Matricul</th>
+        <th scope="col">Model</th>
+        <th scope="col">Solde</th>
+        <th>In parking</th>
+<!--        <th>Stop</th>-->
+        <th>Edite</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
+      <tr *ngFor="let info of infos">
+        <th class="mt">{{info.id}}</th>
+        <td>{{info.create_at | date:'yyyy-MM-dd HH:mm'}}</td>
+        <td>{{info.fullname}}</td>
+        <td>{{info.email}}</td>
+        <td>{{info.phone_number}}</td>
+        <td>{{info.matricule}}</td>
+        <td>{{info.model}}</td>
+        <td>{{info.sold}}</td>
+        <i class="bi bi-p-circle" [style.color]="info.is_in_parking ? '#02a3b9' : '#fff'"></i>
+<!--        <td>-->
+<!--          <button class="button-85" (click)="onDeleteButtonClick(info)">-->
+<!--            <i class="fas fa-trash-alt"></i> Stop-->
+<!--          </button>-->
+<!--        </td>-->
+        <td>
+        <button class="button-85" (click)="handelRaport(info)">
+          <i class="fas fa-trash-alt"></i> Raport
+        </button>
+        </td>
+<!--        <td>-->
+<!--          <button class="button-85" (click)="onEditButtonClick(info)">-->
+<!--            <i class="fas fa-trash-alt"></i> Edit-->
+<!--          </button>-->
+<!--        </td>-->
       </tr>
       </tbody>
+
     </table>
+    </div>
   </div>
 
 </div>

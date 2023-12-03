@@ -5,20 +5,29 @@
     </p>
   </div>
   <div class="card-body">
-    <form>
+    <form [formGroup]="carFormGroup" (ngSubmit)="handelCar()">
       <div class="mb-3">
-        <label  class="form-label">Client</label>
-        <input type="text" class="form-control"  >
+        <label  class="form-label">CIN</label>
+        <input type="text" class="form-control" formControlName="cin"  >
+        <small *ngIf="carFormGroup.get('cin')?.errors && carFormGroup.get('cin')?.touched" class="text-danger">
+          {{ carServiceErorre.getErrorMessage('cin', carFormGroup.get('cin')?.errors ) }}
+        </small>
       </div>
       <div class="mb-3">
         <label  class="form-label">Matricul</label>
-        <input type="text" class="form-control"  >
+        <input type="text" class="form-control"  formControlName="matricule">
+        <small *ngIf="carFormGroup.get('matricule')?.errors && carFormGroup.get('matricule')?.touched" class="text-danger">
+          {{ carServiceErorre.getErrorMessage('matricule', carFormGroup.get('matricule')?.errors ) }}
+        </small>
       </div>
       <div class="mb-3">
         <label  class="form-label">Model</label>
-        <input type="text" class="form-control" >
+        <input type="text" class="form-control" formControlName="model">
+        <small *ngIf="carFormGroup.get('model')?.errors && carFormGroup.get('model')?.touched" class="text-danger">
+          {{ carServiceErorre.getErrorMessage('model', carFormGroup.get('model')?.errors ) }}
+        </small>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="button-85">Submit</button>
     </form>
   </div>
 </div>

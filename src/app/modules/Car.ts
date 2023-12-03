@@ -1,6 +1,6 @@
 export interface Car{
   idCar:number;
-  matricule:string;
+  cin:string;
   isInParking:boolean;
   model:String;
 }

@@ -5,28 +5,44 @@
     </p>
   </div>
   <div class="card-body">
-    <form>
+    <form [formGroup]="clientFormGroup" (ngSubmit)="handelClient()">
       <div class="mb-3">
-        <label  class="form-label">Full Name</label>
-        <input type="text" class="form-control"  >
+
+        <label  class="form-label" >Full Name</label>
+        <input type="text" class="form-control" formControlName="fullname" >
+        <small *ngIf="clientFormGroup.get('fullname')?.errors && clientFormGroup.get('fullname')?.touched" class="text-danger">
+          {{ clientServiceErorre.getErrorMessage('fullname', clientFormGroup.get('fullname')?.errors ) }}
+        </small>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label" >Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" formControlName="email">
+        <small *ngIf="clientFormGroup.get('email')?.errors && clientFormGroup.get('email')?.touched" class="text-danger">
+          {{ clientServiceErorre.getErrorMessage('email', clientFormGroup.get('email')?.errors ) }}
+        </small>
       </div>
       <div class="mb-3">
         <label  class="form-label">Phone Number</label>
-        <input type="text" class="form-control" >
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-      </div>
-      <div class="mb-3">
-        <label  class="form-label">Age</label>
-        <input type="text" class="form-control" >
+        <input type="text" class="form-control" formControlName="phone_number" >
+        <small *ngIf="clientFormGroup.get('phone_number')?.errors && clientFormGroup.get('phone_number')?.touched" class="text-danger">
+          {{ clientServiceErorre.getErrorMessage('phone_number', clientFormGroup.get('phone_number')?.errors ) }}
+        </small>
       </div>
       <div class="mb-3">
         <label  class="form-label">CNI</label>
-        <input type="text" class="form-control" >
+        <input type="text" class="form-control"formControlName="cin" >
+        <small *ngIf="clientFormGroup.get('cin')?.errors && clientFormGroup.get('cin')?.touched" class="text-danger">
+          {{ clientServiceErorre.getErrorMessage('cin', clientFormGroup.get('cin')?.errors ) }}
+        </small>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="mb-3">
+        <label  class="form-label">Age</label>
+        <input type="text" class="form-control" formControlName="age">
+        <small *ngIf="clientFormGroup.get('age')?.errors && clientFormGroup.get('age')?.touched" class="text-danger">
+          {{ clientServiceErorre.getErrorMessage('age', clientFormGroup.get('age')?.errors ) }}
+        </small>
+      </div>
+      <button type="submit" class="button-85">Submit</button>
     </form>
   </div>
 </div>

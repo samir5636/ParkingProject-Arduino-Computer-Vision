@@ -1,0 +1,32 @@
+<div class="card" style="width: 100%;">
+  <div class="card-header d-flex justify-content-center align-items-center ">
+    <p class="mb-0">
+      Raport
+    </p>
+  </div>
+  <div class="card-body col-8">
+    <div class="samir">
+      <table class="table">
+
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Car ID</th>
+          <th scope="col">Creat_at</th>
+          <th scope="col">Message</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let raport of raport ">
+          <th class="mt">{{raport.id}}</th>
+          <td>{{raport.car_id}}</td>
+          <td>{{raport.create_at | date:'yyyy-MM-dd HH:mm'}}</td>
+          <td>{{raport.message}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

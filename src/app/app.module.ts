@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { ListCarInParkingComponent } from './list-car-in-parking/list-car-in-parking.component';
+import { ListRaportClientComponent } from './list-raport-client-parking/list-car-in-parking.component';
 import { NewClientComponent } from './new-client/new-client.component';
 import { NewAbonementComponent } from './new-abonement/new-abonement.component';
 import { NewCarComponent } from './new-car/new-car.component';
@@ -15,12 +15,17 @@ import { EditAbonementComponent } from './edit-abonement/edit-abonement.componen
 import { RefrechAbonementComponent } from './refrech-abonement/refrech-abonement.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { ChartModule } from 'angular-highcharts';
+import {HttpClientModule} from "@angular/common/http";
+import {ClientServiceService} from "./services/client-service.service";
+import {CarServiceService} from "./services/car-service.service";
+import {AbonementServiceService} from "./services/abonement-service.service";
+import {ErorrServiceService} from "./services/erorr-service.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
-    ListCarInParkingComponent,
+    ListRaportClientComponent,
     NewClientComponent,
     NewAbonementComponent,
     NewCarComponent,
@@ -33,9 +38,14 @@ import { ChartModule } from 'angular-highcharts';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     ChartModule
   ],
-  providers: [],
+  providers: [ClientServiceService,
+  CarServiceService,
+  AbonementServiceService,
+    ErorrServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "commonChunk": false,
             "outputPath": "dist/paeking-se",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -31,6 +32,9 @@
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "lodash","highcharts", "highcharts/highstock"
             ]
           },
           "configurations": {
@@ -38,8 +42,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",

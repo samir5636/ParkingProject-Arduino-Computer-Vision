@@ -5,16 +5,22 @@
     </p>
   </div>
   <div class="card-body">
-    <form>
+    <form [formGroup]="abonementFormGroup" (ngSubmit)="handelAbonement()">
       <div class="mb-3">
         <label  class="form-label">Matricul</label>
-        <input type="text" class="form-control" >
+        <input type="text" class="form-control" formControlName="matricule">
+        <small *ngIf="abonementFormGroup.get('matricule')?.errors && abonementFormGroup.get('matricule')?.touched" class="text-danger">
+          {{ abonementErorreService.getErrorMessage('matricule', abonementFormGroup.get('matricule')?.errors ) }}
+        </small>
       </div>
       <div class="mb-3">
         <label  class="form-label">Solde</label>
-        <input type="text" class="form-control"  >
+        <input type="text" class="form-control"  formControlName="sold" >
+        <small *ngIf="abonementFormGroup.get('sold')?.errors && abonementFormGroup.get('sold')?.touched" class="text-danger">
+          {{ abonementErorreService.getErrorMessage('sold', abonementFormGroup.get('sold')?.errors ) }}
+        </small>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="button-85">Submit</button>
     </form>
   </div>
 </div>

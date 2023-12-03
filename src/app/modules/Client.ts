@@ -1,9 +1,8 @@
 export interface Client{
   idClient : number;
-  fullName : string;
+  fullname : string;
   email :string;
-  phoneNumber : string;
+  phone_number : string;
   cin:string;
   age : number;
-  createAtDate:string;
 }
