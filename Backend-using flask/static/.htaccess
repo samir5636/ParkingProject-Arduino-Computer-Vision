@@ -1,0 +1,11 @@
+# Enable mod_rewrite
+RewriteEngine on
+
+# Check if the requested file does not exist
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Check if the requested directory does not exist
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite the request to index.html with the path as a query parameter
+RewriteRule ^(.*)$ /index.html?path=$1 [NC,L,QSA]
